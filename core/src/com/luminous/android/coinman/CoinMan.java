@@ -46,11 +46,22 @@ public class CoinMan extends ApplicationAdapter {
 		coinYs.add((int)height);
 		coinXs.add(Gdx.graphics.getWidth());
 	}
-	
+
 	@Override
 	public void render () {
 		batch.begin();
 		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+		if (coinCount < 100) {
+			coinCount++;
+		} else {
+			coinCount = 0;
+			makeCoin();
+		}
+
+		for (int i = 0; i < coinXs.size(); i++) {
+			batch.draw(coin, coinXs.get(i), coinYs.get(i));
+		}
 
 		if (Gdx.input.justTouched()) {
 			velocity = -10;
