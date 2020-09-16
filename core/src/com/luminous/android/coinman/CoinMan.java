@@ -81,8 +81,7 @@ public class CoinMan extends ApplicationAdapter {
 
 
 
-
-
+	
 
 	@Override
 	public void render () {
