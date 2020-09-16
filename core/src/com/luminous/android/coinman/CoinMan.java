@@ -14,6 +14,7 @@ public class CoinMan extends ApplicationAdapter {
 	int pause = 0;
 	float gravity = 0.2f;
 	float velocity = 0;
+	int manY;
 	
 	@Override
 	public void create () {
@@ -43,6 +44,7 @@ public class CoinMan extends ApplicationAdapter {
 			}
 		}
 
+		velocity = velocity + gravity;
 
 		batch.draw(man[manState], Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/3);
 		batch.end();
