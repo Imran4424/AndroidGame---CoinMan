@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CoinMan extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -22,6 +23,7 @@ public class CoinMan extends ApplicationAdapter {
 	ArrayList<Integer> coinYs = new ArrayList<>();
 	Texture coin;
 	int coinCount;
+	Random random;
 	
 	@Override
 	public void create () {
@@ -36,6 +38,10 @@ public class CoinMan extends ApplicationAdapter {
 
 		coin = new Texture("coin.png");
 		coinCount = 0;
+	}
+
+	public void makeCoin() {
+		
 	}
 
 	@Override
