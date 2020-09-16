@@ -74,8 +74,6 @@ public class CoinMan extends ApplicationAdapter {
 
 
 
-
-
 	
 
 	@Override
