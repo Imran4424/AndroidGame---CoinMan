@@ -13,6 +13,7 @@ public class CoinMan extends ApplicationAdapter {
 	int manState = 0;
 	int pause = 0;
 	float gravity = 0.2f;
+	float velocity = 0;
 	
 	@Override
 	public void create () {
