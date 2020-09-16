@@ -42,7 +42,7 @@ public class CoinMan extends ApplicationAdapter {
 	}
 
 	public void makeCoin() {
-
+		
 	}
 
 	@Override
