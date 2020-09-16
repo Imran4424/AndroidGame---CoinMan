@@ -20,6 +20,8 @@ public class CoinMan extends ApplicationAdapter {
 
 	ArrayList<Integer> coinXs = new ArrayList<>();
 	ArrayList<Integer> coinYs = new ArrayList<>();
+	Texture coin;
+	int coinCount;
 	
 	@Override
 	public void create () {
