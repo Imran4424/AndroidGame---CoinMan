@@ -44,12 +44,12 @@ public class CoinMan extends ApplicationAdapter {
 				manState = 0;
 			}
 		}
-		
+
 		velocity = velocity + gravity;
 		manY -= velocity;
 
-		if (manY <= 0) {
-			manY = 0;
+		if (manY <= 10) {
+			manY = 10;
 		}
 
 		batch.draw(man[manState], Gdx.graphics.getWidth() / 3, manY);
