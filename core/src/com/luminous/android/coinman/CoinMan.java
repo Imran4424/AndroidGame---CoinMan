@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class CoinMan extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture background;
+	Texture[] man;
 	
 	@Override
 	public void create () {
