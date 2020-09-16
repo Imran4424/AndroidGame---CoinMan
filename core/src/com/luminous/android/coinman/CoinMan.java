@@ -47,8 +47,6 @@ public class CoinMan extends ApplicationAdapter {
 		coinXs.add(Gdx.graphics.getWidth());
 	}
 
-
-
 	
 
 	@Override
