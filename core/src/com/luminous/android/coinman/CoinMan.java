@@ -33,6 +33,10 @@ public class CoinMan extends ApplicationAdapter {
 		batch.begin();
 		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+		if (Gdx.input.justTouched()) {
+			velocity = -10;
+		}
+
 		if(pause < 8) {
 			pause++;
 		} else {
