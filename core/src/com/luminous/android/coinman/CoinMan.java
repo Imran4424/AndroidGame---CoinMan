@@ -42,7 +42,9 @@ public class CoinMan extends ApplicationAdapter {
 	}
 
 	public void makeCoin() {
-		
+		float height = random.nextFloat() * Gdx.graphics.getHeight();
+		coinYs.add((int)height);
+		coinXs.add(Gdx.graphics.getWidth());
 	}
 
 	@Override
