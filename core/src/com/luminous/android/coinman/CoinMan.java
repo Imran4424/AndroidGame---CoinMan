@@ -13,7 +13,7 @@ public class CoinMan extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		background = new Texture("bg.jpg");
+		background = new Texture("bg.png");
 	}
 
 	@Override
