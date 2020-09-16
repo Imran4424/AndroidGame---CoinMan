@@ -7,13 +7,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class CoinMan extends ApplicationAdapter {
-	final int STAND = 0;
-	final int RUN = 1;
 	SpriteBatch batch;
 	Texture background;
 	Texture[] man;
 	int manState = 0;
 	int pause = 0;
+	float gravity = 0.2f;
 	
 	@Override
 	public void create () {
