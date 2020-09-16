@@ -15,6 +15,11 @@ public class CoinMan extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		background = new Texture("bg.png");
+		man = new Texture[4];
+		man[0] = new Texture("frame-1.png");
+		man[1] = new Texture("frame-2.png");
+		man[2] = new Texture("frame-3.png");
+		man[3] = new Texture("frame-4.png");
 	}
 
 	@Override
