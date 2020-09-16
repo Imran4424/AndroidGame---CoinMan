@@ -38,10 +38,11 @@ public class CoinMan extends ApplicationAdapter {
 
 		coin = new Texture("coin.png");
 		coinCount = 0;
+		random = new Random();
 	}
 
 	public void makeCoin() {
-		
+
 	}
 
 	@Override
