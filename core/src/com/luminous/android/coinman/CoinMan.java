@@ -7,9 +7,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class CoinMan extends ApplicationAdapter {
+	final int STAND = 0;
+	final int RUN = 1;
 	SpriteBatch batch;
 	Texture background;
 	Texture[] man;
+	int manState = 0;
+	int pause = 0;
 	
 	@Override
 	public void create () {
@@ -26,6 +30,21 @@ public class CoinMan extends ApplicationAdapter {
 	public void render () {
 		batch.begin();
 		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+		if(pause < 8) {
+			pause++;
+		} else {
+			pause = 0;
+
+			if (manState < 3) {
+				manState++;
+			} else {
+				manState = 0;
+			}
+		}
+
+
+		batch.draw(man[manState], Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/3);
 		batch.end();
 	}
 	
