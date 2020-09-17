@@ -2,11 +2,11 @@ package com.luminous.android.coinman;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.Rectangle;
 
-import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,13 +25,13 @@ public class CoinMan extends ApplicationAdapter {
 
 	ArrayList<Integer> coinXs = new ArrayList<>();
 	ArrayList<Integer> coinYs = new ArrayList<>();
-	ArrayList<Rectangle> coinRectangle = new ArrayList<>();
+	ArrayList<Rectangle> coinRectangles = new ArrayList<>();
 	Texture coin;
 	int coinCount;
 
 	ArrayList<Integer> bombXs = new ArrayList<>();
 	ArrayList<Integer> bombYs = new ArrayList<>();
-	ArrayList<Rectangle> bombRectangle = new ArrayList<>();
+	ArrayList<Rectangle> bombRectangles = new ArrayList<>();
 	Texture bomb;
 	int bombCount;
 
@@ -80,13 +80,13 @@ public class CoinMan extends ApplicationAdapter {
 			makeCoin();
 		}
 
-		coinRectangle.clear();
+		coinRectangles.clear();
 		for (int i = 0; i < coinXs.size(); i++) {
 			batch.draw(coin, coinXs.get(i), coinYs.get(i));
 			// moving animation creation
 			coinXs.set(i, coinXs.get(i) - 4);
 			// for collision
-			coinRectangle.add(new Rectangle(coinXs.get(i), coinYs.get(i), coin.getWidth(), coin.getHeight()));
+			coinRectangles.add(new Rectangle(coinXs.get(i), coinYs.get(i), coin.getWidth(), coin.getHeight()));
 		}
 
 		// bombs
@@ -97,13 +97,13 @@ public class CoinMan extends ApplicationAdapter {
 			makeBomb();
 		}
 
-		bombRectangle.clear();
+		bombRectangles.clear();
 		for (int i = 0; i < bombXs.size(); i++) {
 			batch.draw(bomb, bombXs.get(i), bombYs.get(i));
 			// moving animation creation
 			bombXs.set(i, bombXs.get(i) - 4);
 			// for collision
-			bombRectangle.add(new Rectangle(bombXs.get(i), bombYs.get(i), bomb.getWidth(), bomb.getHeight()));
+			bombRectangles.add(new Rectangle(bombXs.get(i), bombYs.get(i), bomb.getWidth(), bomb.getHeight()));
 		}
 
 		if (Gdx.input.justTouched()) {
@@ -133,6 +133,11 @@ public class CoinMan extends ApplicationAdapter {
 
 		// collision detection
 		manRectangle = new Rectangle(Gdx.graphics.getWidth() / 3, manY, man[manState].getWidth(), man[manState].getHeight());
+		for (int i = 0; i< coinRectangles.size(); i++) {
+			if (Intersector.overlaps(manRectangle, coinRectangles.get(i))) {
+				
+			}
+		}
 
 		batch.end();
 	}
