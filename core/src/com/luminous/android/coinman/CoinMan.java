@@ -61,6 +61,7 @@ public class CoinMan extends ApplicationAdapter {
 
 		for (int i = 0; i < coinXs.size(); i++) {
 			batch.draw(coin, coinXs.get(i), coinYs.get(i));
+			coinXs.set(i, coinXs.get(i) - 4);
 		}
 
 		if (Gdx.input.justTouched()) {
