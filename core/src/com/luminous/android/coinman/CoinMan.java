@@ -45,7 +45,7 @@ public class CoinMan extends ApplicationAdapter {
 		man[2] = new Texture("frame-3.png");
 		man[3] = new Texture("frame-4.png");
 		manY = Gdx.graphics.getHeight() / 3;
-		manRectangle = new Rectangle();
+//		manRectangle = new Rectangle();
 
 		coin = new Texture("coin.png");
 		coinCount = 0;
@@ -132,7 +132,7 @@ public class CoinMan extends ApplicationAdapter {
 		batch.draw(man[manState], Gdx.graphics.getWidth() / 3, manY);
 
 		// collision detection
-		manRectangle.setBounds(Gdx.graphics.getWidth() / 3, manY, man[manState].getWidth(), man[manState].getHeight());
+		manRectangle = new Rectangle(Gdx.graphics.getWidth() / 3, manY, man[manState].getWidth(), man[manState].getHeight());
 
 		batch.end();
 	}
