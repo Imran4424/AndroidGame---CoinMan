@@ -68,6 +68,7 @@ public class CoinMan extends ApplicationAdapter {
 		batch.begin();
 		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+		// coins
 		if (coinCount < 100) {
 			coinCount++;
 		} else {
@@ -75,6 +76,7 @@ public class CoinMan extends ApplicationAdapter {
 			makeCoin();
 		}
 
+		coinRectangle.clear();
 		for (int i = 0; i < coinXs.size(); i++) {
 			batch.draw(coin, coinXs.get(i), coinYs.get(i));
 			// moving animation creation
@@ -82,6 +84,7 @@ public class CoinMan extends ApplicationAdapter {
 			coinRectangle.add(new Rectangle(coinXs.get(i), coinYs.get(i), coin.getWidth(), coin.getHeight()));
 		}
 
+		// bombs
 		if (bombCount < 500) {
 			bombCount++;
 		} else {
