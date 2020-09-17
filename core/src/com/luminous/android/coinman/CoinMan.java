@@ -79,6 +79,7 @@ public class CoinMan extends ApplicationAdapter {
 			batch.draw(coin, coinXs.get(i), coinYs.get(i));
 			// moving animation creation
 			coinXs.set(i, coinXs.get(i) - 4);
+			coinRectangle.add(new Rectangle(coinXs.get(i), coinYs.get(i), coin.getWidth(), coin.getHeight()));
 		}
 
 		if (bombCount < 500) {
