@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -21,6 +22,7 @@ public class CoinMan extends ApplicationAdapter {
 
 	ArrayList<Integer> coinXs = new ArrayList<>();
 	ArrayList<Integer> coinYs = new ArrayList<>();
+	ArrayList<Rectangle> coinRectangle = new ArrayList<>();
 	Texture coin;
 	int coinCount;
 	Random random;
@@ -46,12 +48,19 @@ public class CoinMan extends ApplicationAdapter {
 		random = new Random();
 
 		bomb = new Texture("bomb.png");
+		bombCount = 0;
 	}
 
 	public void makeCoin() {
 		float height = random.nextFloat() * Gdx.graphics.getHeight();
 		coinYs.add((int)height);
 		coinXs.add(Gdx.graphics.getWidth());
+	}
+
+	public void makeBomb() {
+		float height = random.nextFloat() * Gdx.graphics.getHeight();
+		bombYs.add((int)height);
+		bombXs.add(Gdx.graphics.getWidth());
 	}
 
 	@Override
@@ -68,7 +77,21 @@ public class CoinMan extends ApplicationAdapter {
 
 		for (int i = 0; i < coinXs.size(); i++) {
 			batch.draw(coin, coinXs.get(i), coinYs.get(i));
+			// moving animation creation
 			coinXs.set(i, coinXs.get(i) - 4);
+		}
+
+		if (bombCount < 500) {
+			bombCount++;
+		} else {
+			bombCount = 0;
+			makeBomb();
+		}
+
+		for (int i = 0; i < bombXs.size(); i++) {
+			batch.draw(bomb, bombXs.get(i), bombYs.get(i));
+			// moving animation creation
+			bombXs.set(i, bombXs.get(i) - 4);
 		}
 
 		if (Gdx.input.justTouched()) {
