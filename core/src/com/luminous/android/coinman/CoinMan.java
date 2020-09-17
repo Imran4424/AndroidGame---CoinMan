@@ -30,6 +30,7 @@ public class CoinMan extends ApplicationAdapter {
 
 	ArrayList<Integer> bombXs = new ArrayList<>();
 	ArrayList<Integer> bombYs = new ArrayList<>();
+	ArrayList<Rectangle> bombRectangle = new ArrayList<>();
 	Texture bomb;
 	int bombCount;
 
@@ -82,6 +83,7 @@ public class CoinMan extends ApplicationAdapter {
 			batch.draw(coin, coinXs.get(i), coinYs.get(i));
 			// moving animation creation
 			coinXs.set(i, coinXs.get(i) - 4);
+			// for collision
 			coinRectangle.add(new Rectangle(coinXs.get(i), coinYs.get(i), coin.getWidth(), coin.getHeight()));
 		}
 
@@ -93,10 +95,13 @@ public class CoinMan extends ApplicationAdapter {
 			makeBomb();
 		}
 
+		bombRectangle.clear();
 		for (int i = 0; i < bombXs.size(); i++) {
 			batch.draw(bomb, bombXs.get(i), bombYs.get(i));
 			// moving animation creation
 			bombXs.set(i, bombXs.get(i) - 4);
+			// for collision
+			bombRectangle.add(new Rectangle(bombXs.get(i), bombYs.get(i), bomb.getWidth(), bomb.getHeight()));
 		}
 
 		if (Gdx.input.justTouched()) {
