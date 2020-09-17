@@ -24,7 +24,12 @@ public class CoinMan extends ApplicationAdapter {
 	Texture coin;
 	int coinCount;
 	Random random;
-	
+
+	ArrayList<Integer> bombXs = new ArrayList<>();
+	ArrayList<Integer> bombYs = new ArrayList<>();
+	Texture bomb;
+	int bombCount;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -39,6 +44,8 @@ public class CoinMan extends ApplicationAdapter {
 		coin = new Texture("coin.png");
 		coinCount = 0;
 		random = new Random();
+
+		bomb = new Texture("bomb.png");
 	}
 
 	public void makeCoin() {
