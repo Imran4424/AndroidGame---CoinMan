@@ -20,12 +20,13 @@ public class CoinMan extends ApplicationAdapter {
 	float velocity = 0;
 	int manY = 0;
 
+	Random random;
+
 	ArrayList<Integer> coinXs = new ArrayList<>();
 	ArrayList<Integer> coinYs = new ArrayList<>();
 	ArrayList<Rectangle> coinRectangle = new ArrayList<>();
 	Texture coin;
 	int coinCount;
-	Random random;
 
 	ArrayList<Integer> bombXs = new ArrayList<>();
 	ArrayList<Integer> bombYs = new ArrayList<>();
