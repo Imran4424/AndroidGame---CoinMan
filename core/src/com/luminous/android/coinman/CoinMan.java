@@ -135,7 +135,13 @@ public class CoinMan extends ApplicationAdapter {
 		manRectangle = new Rectangle(Gdx.graphics.getWidth() / 3, manY, man[manState].getWidth(), man[manState].getHeight());
 		for (int i = 0; i< coinRectangles.size(); i++) {
 			if (Intersector.overlaps(manRectangle, coinRectangles.get(i))) {
-				
+
+			}
+		}
+
+		for (int i = 0; i< bombRectangles.size(); i++) {
+			if (Intersector.overlaps(manRectangle, bombRectangles.get(i))) {
+
 			}
 		}
 
