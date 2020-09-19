@@ -138,10 +138,11 @@ public class CoinMan extends ApplicationAdapter {
 		for (int i = 0; i< coinRectangles.size(); i++) {
 			if (Intersector.overlaps(manRectangle, coinRectangles.get(i))) {
 				score++;
-				
+
 				coinRectangles.remove(i);
 				coinXs.remove(i);
 				coinYs.remove(i);
+				break;
 			}
 		}
 
