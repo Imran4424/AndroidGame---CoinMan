@@ -21,6 +21,7 @@ public class CoinMan extends ApplicationAdapter {
 	int manY = 0;
 	Rectangle manRectangle;
 
+	int score = 0;
 	Random random;
 
 	ArrayList<Integer> coinXs = new ArrayList<>();
@@ -132,6 +133,7 @@ public class CoinMan extends ApplicationAdapter {
 		batch.draw(man[manState], Gdx.graphics.getWidth() / 3, manY);
 
 		// collision detection
+		// coins
 		manRectangle = new Rectangle(Gdx.graphics.getWidth() / 3, manY, man[manState].getWidth(), man[manState].getHeight());
 		for (int i = 0; i< coinRectangles.size(); i++) {
 			if (Intersector.overlaps(manRectangle, coinRectangles.get(i))) {
@@ -139,6 +141,7 @@ public class CoinMan extends ApplicationAdapter {
 			}
 		}
 
+		// bomb
 		for (int i = 0; i< bombRectangles.size(); i++) {
 			if (Intersector.overlaps(manRectangle, bombRectangles.get(i))) {
 
