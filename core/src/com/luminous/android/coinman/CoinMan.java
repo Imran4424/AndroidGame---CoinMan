@@ -3,6 +3,7 @@ package com.luminous.android.coinman;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
@@ -22,6 +23,8 @@ public class CoinMan extends ApplicationAdapter {
 	Rectangle manRectangle;
 
 	int score = 0;
+	BitmapFont scoreText;
+
 	Random random;
 
 	ArrayList<Integer> coinXs = new ArrayList<>();
