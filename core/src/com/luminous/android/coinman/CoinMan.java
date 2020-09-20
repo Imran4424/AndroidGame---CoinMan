@@ -157,6 +157,10 @@ public class CoinMan extends ApplicationAdapter {
 				coinXs.clear();
 				coinYs.clear();
 				coinRectangles.clear();
+
+				bombXs.clear();
+				bombYs.clear();
+				bombRectangles.clear();
 			}
 
 
