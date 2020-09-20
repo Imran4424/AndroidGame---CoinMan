@@ -25,6 +25,7 @@ public class CoinMan extends ApplicationAdapter {
 
 	int score = 0;
 	BitmapFont scoreText;
+	int gameState = 0;
 
 	Random random;
 
@@ -161,7 +162,7 @@ public class CoinMan extends ApplicationAdapter {
 			}
 		}
 
-		scoreText.draw(batch, String.valueOf(score), 100, 1020);
+		scoreText.draw(batch, String.valueOf(score), 100, 175);
 		batch.end();
 	}
 	
