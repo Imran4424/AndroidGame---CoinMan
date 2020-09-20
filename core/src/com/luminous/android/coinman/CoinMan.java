@@ -85,6 +85,85 @@ public class CoinMan extends ApplicationAdapter {
 		// game state
 		if (1 == gameState) {
 			// Game is live
+			// coins
+			if (coinCount < 100) {
+				coinCount++;
+			} else {
+				coinCount = 0;
+				makeCoin();
+			}
+
+			coinRectangles.clear();
+			for (int i = 0; i < coinXs.size(); i++) {
+				batch.draw(coin, coinXs.get(i), coinYs.get(i));
+				// moving animation creation
+				coinXs.set(i, coinXs.get(i) - 4);
+				// for collision
+				coinRectangles.add(new Rectangle(coinXs.get(i), coinYs.get(i), coin.getWidth(), coin.getHeight()));
+			}
+
+			// bombs
+			if (bombCount < 500) {
+				bombCount++;
+			} else {
+				bombCount = 0;
+				makeBomb();
+			}
+
+			bombRectangles.clear();
+			for (int i = 0; i < bombXs.size(); i++) {
+				batch.draw(bomb, bombXs.get(i), bombYs.get(i));
+				// moving animation creation
+				bombXs.set(i, bombXs.get(i) - 4);
+				// for collision
+				bombRectangles.add(new Rectangle(bombXs.get(i), bombYs.get(i), bomb.getWidth(), bomb.getHeight()));
+			}
+
+			if (Gdx.input.justTouched()) {
+				velocity = -10;
+			}
+
+			if(pause < 8) {
+				pause++;
+			} else {
+				pause = 0;
+
+				if (manState < 3) {
+					manState++;
+				} else {
+					manState = 0;
+				}
+			}
+
+			velocity = velocity + gravity;
+			manY -= velocity;
+
+			if (manY <= 10) {
+				manY = 10;
+			}
+
+			batch.draw(man[manState], Gdx.graphics.getWidth() / 3, manY);
+
+			// collision detection
+			// coins
+			manRectangle = new Rectangle(Gdx.graphics.getWidth() / 3, manY, man[manState].getWidth(), man[manState].getHeight());
+			for (int i = 0; i< coinRectangles.size(); i++) {
+				if (Intersector.overlaps(manRectangle, coinRectangles.get(i))) {
+					score++;
+
+					coinRectangles.remove(i);
+					coinXs.remove(i);
+					coinYs.remove(i);
+					break;
+				}
+			}
+
+			// bomb
+			for (int i = 0; i< bombRectangles.size(); i++) {
+				if (Intersector.overlaps(manRectangle, bombRectangles.get(i))) {
+					gameState = 2;
+				}
+			}
 		} else if (0 == gameState) {
 			// waiting to start
 			if (Gdx.input.justTouched()) {
@@ -94,85 +173,7 @@ public class CoinMan extends ApplicationAdapter {
 			// GAME OVER
 		}
 
-		// coins
-		if (coinCount < 100) {
-			coinCount++;
-		} else {
-			coinCount = 0;
-			makeCoin();
-		}
 
-		coinRectangles.clear();
-		for (int i = 0; i < coinXs.size(); i++) {
-			batch.draw(coin, coinXs.get(i), coinYs.get(i));
-			// moving animation creation
-			coinXs.set(i, coinXs.get(i) - 4);
-			// for collision
-			coinRectangles.add(new Rectangle(coinXs.get(i), coinYs.get(i), coin.getWidth(), coin.getHeight()));
-		}
-
-		// bombs
-		if (bombCount < 500) {
-			bombCount++;
-		} else {
-			bombCount = 0;
-			makeBomb();
-		}
-
-		bombRectangles.clear();
-		for (int i = 0; i < bombXs.size(); i++) {
-			batch.draw(bomb, bombXs.get(i), bombYs.get(i));
-			// moving animation creation
-			bombXs.set(i, bombXs.get(i) - 4);
-			// for collision
-			bombRectangles.add(new Rectangle(bombXs.get(i), bombYs.get(i), bomb.getWidth(), bomb.getHeight()));
-		}
-
-		if (Gdx.input.justTouched()) {
-			velocity = -10;
-		}
-
-		if(pause < 8) {
-			pause++;
-		} else {
-			pause = 0;
-
-			if (manState < 3) {
-				manState++;
-			} else {
-				manState = 0;
-			}
-		}
-
-		velocity = velocity + gravity;
-		manY -= velocity;
-
-		if (manY <= 10) {
-			manY = 10;
-		}
-
-		batch.draw(man[manState], Gdx.graphics.getWidth() / 3, manY);
-
-		// collision detection
-		// coins
-		manRectangle = new Rectangle(Gdx.graphics.getWidth() / 3, manY, man[manState].getWidth(), man[manState].getHeight());
-		for (int i = 0; i< coinRectangles.size(); i++) {
-			if (Intersector.overlaps(manRectangle, coinRectangles.get(i))) {
-				score++;
-
-				coinRectangles.remove(i);
-				coinXs.remove(i);
-				coinYs.remove(i);
-				break;
-			}
-		}
-
-		// bomb
-		for (int i = 0; i< bombRectangles.size(); i++) {
-			if (Intersector.overlaps(manRectangle, bombRectangles.get(i))) {
-				gameState = 2;
-			}
-		}
 
 		scoreText.draw(batch, String.valueOf(score), 100, 175);
 		batch.end();
