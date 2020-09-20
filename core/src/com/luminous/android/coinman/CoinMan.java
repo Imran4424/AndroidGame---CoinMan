@@ -16,6 +16,7 @@ public class CoinMan extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture background;
 	Texture[] man;
+	Texture dizzy;
 	int manState = 0;
 	int pause = 0;
 	float gravity = 0.2f;
@@ -50,6 +51,7 @@ public class CoinMan extends ApplicationAdapter {
 		man[1] = new Texture("frame-2.png");
 		man[2] = new Texture("frame-3.png");
 		man[3] = new Texture("frame-4.png");
+		dizzy = new Texture("dizzy-1.png");
 		manY = Gdx.graphics.getHeight() / 3;
 //		manRectangle = new Rectangle();
 
@@ -168,7 +170,12 @@ public class CoinMan extends ApplicationAdapter {
 
 		}
 
-		batch.draw(man[manState], Gdx.graphics.getWidth() / 3 - man[manState].getWidth() / 2, manY);
+		if (gameState == 2) {
+
+		} else {
+			batch.draw(man[manState], Gdx.graphics.getWidth() / 3 - man[manState].getWidth() / 2, manY);
+		}
+
 
 		// collision detection
 		// coins
