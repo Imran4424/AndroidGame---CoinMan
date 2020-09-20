@@ -149,13 +149,24 @@ public class CoinMan extends ApplicationAdapter {
 			}
 		} else if(2 == gameState) {
 			// GAME OVER
+			if (Gdx.input.justTouched()) {
+				gameState = 1;
+				manY = Gdx.graphics.getHeight() / 3;
+				score = 0;
+
+				coinXs.clear();
+				coinYs.clear();
+				coinRectangles.clear();
+			}
+
+
 		}
 
 		batch.draw(man[manState], Gdx.graphics.getWidth() / 3, manY);
 
 		// collision detection
 		// coins
-		manRectangle = new Rectangle(Gdx.graphics.getWidth() / 3, manY, man[manState].getWidth(), man[manState].getHeight());
+		manRectangle = new Rectangle(Gdx.graphics.getWidth() / 3 - man[manState].getWidth() / 2, manY, man[manState].getWidth(), man[manState].getHeight());
 		for (int i = 0; i< coinRectangles.size(); i++) {
 			if (Intersector.overlaps(manRectangle, coinRectangles.get(i))) {
 				score++;
