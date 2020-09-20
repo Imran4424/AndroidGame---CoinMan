@@ -82,6 +82,11 @@ public class CoinMan extends ApplicationAdapter {
 		batch.begin();
 		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+		// game state
+		if (1 == gameState) {
+			// Game is live
+		}
+
 		// coins
 		if (coinCount < 100) {
 			coinCount++;
