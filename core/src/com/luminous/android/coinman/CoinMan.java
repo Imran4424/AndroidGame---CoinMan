@@ -87,7 +87,9 @@ public class CoinMan extends ApplicationAdapter {
 			// Game is live
 		} else if (0 == gameState) {
 			// waiting to start
-			
+
+		} else if(2 == gameState) {
+			// GAME OVER
 		}
 
 		// coins
