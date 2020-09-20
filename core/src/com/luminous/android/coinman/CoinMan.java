@@ -87,7 +87,9 @@ public class CoinMan extends ApplicationAdapter {
 			// Game is live
 		} else if (0 == gameState) {
 			// waiting to start
-
+			if (Gdx.input.justTouched()) {
+				gameState = 1;
+			}
 		} else if(2 == gameState) {
 			// GAME OVER
 		}
@@ -168,7 +170,7 @@ public class CoinMan extends ApplicationAdapter {
 		// bomb
 		for (int i = 0; i< bombRectangles.size(); i++) {
 			if (Intersector.overlaps(manRectangle, bombRectangles.get(i))) {
-
+				gameState = 2;
 			}
 		}
 
