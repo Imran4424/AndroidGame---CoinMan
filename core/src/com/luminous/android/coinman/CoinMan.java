@@ -57,6 +57,8 @@ public class CoinMan extends ApplicationAdapter {
 
 		bomb = new Texture("bomb.png");
 		bombCount = 0;
+
+		scoreText = new BitmapFont();
 	}
 
 	public void makeCoin() {
