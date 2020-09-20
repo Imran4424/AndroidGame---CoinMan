@@ -2,6 +2,7 @@ package com.luminous.android.coinman;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -59,6 +60,8 @@ public class CoinMan extends ApplicationAdapter {
 		bombCount = 0;
 
 		scoreText = new BitmapFont();
+		scoreText.setColor(Color.WHITE);
+		scoreText.getData().setScale(10);
 	}
 
 	public void makeCoin() {
