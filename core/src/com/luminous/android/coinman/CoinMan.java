@@ -161,6 +161,7 @@ public class CoinMan extends ApplicationAdapter {
 			}
 		}
 
+		scoreText.draw(batch, String.valueOf(score), 100, 200);
 		batch.end();
 	}
 	
