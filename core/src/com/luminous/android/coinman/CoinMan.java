@@ -142,8 +142,6 @@ public class CoinMan extends ApplicationAdapter {
 			if (manY <= 10) {
 				manY = 10;
 			}
-
-			batch.draw(man[manState], Gdx.graphics.getWidth() / 3, manY);
 		} else if (0 == gameState) {
 			// waiting to start
 			if (Gdx.input.justTouched()) {
@@ -152,7 +150,9 @@ public class CoinMan extends ApplicationAdapter {
 		} else if(2 == gameState) {
 			// GAME OVER
 		}
-		
+
+		batch.draw(man[manState], Gdx.graphics.getWidth() / 3, manY);
+
 		// collision detection
 		// coins
 		manRectangle = new Rectangle(Gdx.graphics.getWidth() / 3, manY, man[manState].getWidth(), man[manState].getHeight());
